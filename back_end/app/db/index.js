@@ -1,6 +1,8 @@
 const Mongoose = require('mongoose');
 require('dotenv').config();
-const url = process.env.URl;
+// const url = process.env.URl;
+// const url = "mongodb://localhost:27017/motorservice";
+const url = process.env.URl || "mongodb://localhost:27017/myApp-test";
 module.exports = async () => {
   try {
     // Connection to database
