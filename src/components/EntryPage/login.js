@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import Card from './Card';
 import Input from './Input';
 import InputGroup from './InputGroup';
-import { EntryPage, PageHeader } from './entryPage';
-import { Link, useHistory } from 'react-router-dom';
+import { PageHeader } from './entryPage';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineEye, AiFillEye } from 'react-icons/ai';
 import loginAsync from '../../redux/actions/loginAction';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const [inputType, setInputType] = useState('password');
   const [loginInfo, setLoginInfo] = useState({
@@ -42,11 +42,11 @@ const Login = () => {
   };
 
   //redirect users to service page after login
-  useEffect(() => {
-    if (!(state.login_token === null)) {
-      history.push('/services');
-    }
-  }, [state]);
+  // useEffect(() => {
+  //   if (!(state.login_token === null)) {
+  //     history.push('/services');
+  //   }
+  // }, [state]);
 
   return (
     <>

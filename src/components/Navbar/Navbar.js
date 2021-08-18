@@ -6,10 +6,10 @@ import Dropdown from './Dropdown';
 import ProfileCard from './ProfileCard';
 
 function Navbar() {
-  const [user, isLoggedIn] = useState({
+  const user = {
     userName: 'Abdullah',
     isLoggedIn: false,
-  });
+  };
 
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);

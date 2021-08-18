@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import Button from './Button';
+import React from 'react';
+// import Button from './Button';
 import Card from './Card';
-import Input from './Input';
-import InputGroup from './InputGroup';
+// import Input from './Input';
+// import InputGroup from './InputGroup';
 import { PageHeader } from './entryPage';
 
 const EmailSent = () => {
