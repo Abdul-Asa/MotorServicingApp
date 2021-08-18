@@ -62,7 +62,7 @@ const Login = () => {
         <Card>
           <h3>Login</h3>
 
-          <form>
+          <form netlify>
             <InputGroup>
               <Input
                 name="email"

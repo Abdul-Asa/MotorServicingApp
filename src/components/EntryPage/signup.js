@@ -61,7 +61,6 @@ const Signup = () => {
       <PageHeader to="/">
         <div className="logo">
           <span className="color">
-            {' '}
             Motorify
             <i className="fas fa-car" />
           </span>
@@ -70,7 +69,7 @@ const Signup = () => {
       <div className="flex flexWidth">
         <Card>
           <h3>Sign up</h3>
-          <form onSubmit={submitLogin}>
+          <form onSubmit={submitLogin} netlify>
             <InputGroup>
               <Input
                 name="firstName"
