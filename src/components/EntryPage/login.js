@@ -1,22 +1,22 @@
-import React, { useState, useEffect } from "react";
-import Button from "./Button";
-import Card from "./Card";
-import Input from "./Input";
-import InputGroup from "./InputGroup";
-import { EntryPage, PageHeader } from "./entryPage";
-import { Link, useHistory } from 'react-router-dom'
-import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineEye, AiFillEye } from "react-icons/ai";
-import loginAsync from "../../redux/actions/loginAction";
+import React, { useState, useEffect } from 'react';
+import Button from './Button';
+import Card from './Card';
+import Input from './Input';
+import InputGroup from './InputGroup';
+import { EntryPage, PageHeader } from './entryPage';
+import { Link, useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { AiOutlineEye, AiFillEye } from 'react-icons/ai';
+import loginAsync from '../../redux/actions/loginAction';
 
 const Login = () => {
   const dispatch = useDispatch();
-  const history = useHistory()
+  const history = useHistory();
 
-  const [inputType, setInputType] = useState("password");
+  const [inputType, setInputType] = useState('password');
   const [loginInfo, setLoginInfo] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const handleInput = (e) => {
@@ -36,24 +36,23 @@ const Login = () => {
     e.preventDefault();
     dispatch(loginAsync(loginInfo));
     setLoginInfo({
-      email: "",
-      password: "",
+      email: '',
+      password: '',
     });
   };
 
   //redirect users to service page after login
   useEffect(() => {
-    if (!(state.login_token === null )) {
-      history.push('/services')
+    if (!(state.login_token === null)) {
+      history.push('/services');
     }
-  }, [state])
+  }, [state]);
 
   return (
     <>
       <PageHeader to="/">
         <div className="logo">
           <span className="color">
-            {" "}
             Motorify
             <i className="fas fa-car" />
           </span>
@@ -79,10 +78,10 @@ const Login = () => {
             <InputGroup>
               <div className="flex3">
                 <div className="label-eye-wrapper">
-                  {inputType === "password" ? (
-                    <AiOutlineEye onClick={() => setInputType("text")} />
+                  {inputType === 'password' ? (
+                    <AiOutlineEye onClick={() => setInputType('text')} />
                   ) : (
-                    <AiFillEye onClick={() => setInputType("password")} />
+                    <AiFillEye onClick={() => setInputType('password')} />
                   )}
                 </div>
               </div>
@@ -96,16 +95,15 @@ const Login = () => {
                 id="login-password"
               />
             </InputGroup>
-           
+
             <div className="flex3">
-              
-              <Link to="/forgot-password"> Forgot your password? </Link>{" "}
+              <Link to="/forgot-password"> Forgot your password? </Link>{' '}
             </div>
 
             {state.isLoading ? (
               <h2>Loading... </h2>
             ) : (
-              <h2>{state.error.data.message || ""} </h2>
+              <h2>{state.error.data.message || ''} </h2>
             )}
 
             <Button

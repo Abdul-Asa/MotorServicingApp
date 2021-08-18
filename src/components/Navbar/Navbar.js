@@ -6,133 +6,136 @@ import Dropdown from './Dropdown';
 import ProfileCard from './ProfileCard';
 
 function Navbar() {
+  const [user, isLoggedIn] = useState({
+    userName: 'Abdullah',
+    isLoggedIn: false,
+  });
 
-const [user, isLoggedIn] = useState({
-    userName : "Abdullah",
-    isLoggedIn : true
-})
+  const [click, setClick] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
 
-const [click, setClick] = useState(false);
-const [dropdown, setDropdown] = useState(false);
+  const handleClick = () => setClick(!click);
+  const closeMobileMenu = () => setClick(false);
 
-const handleClick = () => setClick(!click);
-const closeMobileMenu = () => setClick(false);
-
-const onMouseEnter = () => {
+  const onMouseEnter = () => {
     if (window.innerWidth < 960) {
-    setDropdown(false);
+      setDropdown(false);
     } else {
-    setDropdown(true);
+      setDropdown(true);
     }
-};
+  };
 
-const onMouseLeave = () => {
+  const onMouseLeave = () => {
     if (window.innerWidth < 960) {
-    setDropdown(false);
+      setDropdown(false);
     } else {
-    setDropdown(false);
+      setDropdown(false);
     }
-};
+  };
 
-    return (
+  return (
     <>
-        <nav className='navbar'>
-        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            Motorify
-            <i class='fas fa-car' />
+      <nav className="navbar">
+        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+          Motorify
+          <i class="fas fa-car" />
         </Link>
-        <div className='menu-icon' onClick={handleClick}>
-            <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+        <div className="menu-icon" onClick={handleClick}>
+          <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
         </div>
         <ul className={click ? 'nav-menu active' : 'nav-menu'}>
-            <li className='nav-item'>
-            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
-                Home
+          <li className="nav-item">
+            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+              Home
             </Link>
-            </li>
-            <li
-            className='nav-item'
+          </li>
+          <li
+            className="nav-item"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            >
+          >
             <Link
-                to='/about-us'
-                className='nav-links'
-                onClick={closeMobileMenu}
+              to="/about-us"
+              className="nav-links"
+              onClick={closeMobileMenu}
             >
-                About <i className='fas fa-caret-down' />
+              About <i className="fas fa-caret-down" />
             </Link>
             {dropdown && <Dropdown />}
-            </li>
-            <li className='nav-item'>
+          </li>
+          <li className="nav-item">
             <Link
-                to='/services'
-                className='nav-links'
-                onClick={closeMobileMenu}
+              to="/services"
+              className="nav-links"
+              onClick={closeMobileMenu}
             >
-                Services
+              Services
             </Link>
-            </li>
-            
-            <li className='nav-item'>
+          </li>
+
+          <li className="nav-item">
             <Link
-                to ='/get-quote'
-                className='nav-links'
-                onClick={closeMobileMenu}
+              to="/get-quote"
+              className="nav-links"
+              onClick={closeMobileMenu}
             >
-                Get A Quote
+              Get A Quote
             </Link>
+          </li>
+
+          {user.isLoggedIn && (
+            <>
+              <li className="nav-links-mobile">
+                <Link
+                  to="/login"
+                  className="login-links"
+                  onClick={closeMobileMenu}
+                >
+                  Manage profile
+                </Link>
+              </li>
+              <li className="nav-links-mobile">
+                <Link
+                  to="/login"
+                  className="login-links"
+                  onClick={closeMobileMenu}
+                >
+                  My cart
+                </Link>
+              </li>
+              <li className="nav-links-mobile">
+                <Link
+                  to="/login"
+                  className="login-links"
+                  onClick={closeMobileMenu}
+                >
+                  Logout
+                </Link>
+              </li>
+            </>
+          )}
+
+          {!user.isLoggedIn && (
+            <li className="nav-links-mobile">
+              <Link
+                to="/login"
+                className="login-links"
+                onClick={closeMobileMenu}
+              >
+                Login
+              </Link>
             </li>
-
-            {user.isLoggedIn && 
-                <>
-                    <li className='nav-links-mobile'>
-                        <Link
-                            to ='/login'
-                            className = "login-links"
-                            onClick={closeMobileMenu}
-                        >
-                            Manage profile
-                        </Link>
-                    </li>  
-                    <li className='nav-links-mobile'>
-                        <Link
-                            to ='/login'
-                            className = "login-links"
-                            onClick={closeMobileMenu}
-                        >
-                            My cart
-                        </Link>
-                    </li>   
-                    <li className='nav-links-mobile'>
-                        <Link
-                            to ='/login'
-                            className = "login-links"
-                            onClick={closeMobileMenu}
-                        >
-                            Logout
-                        </Link>
-                    </li>   
-                </> 
-            }
-
-            {!user.isLoggedIn && 
-                <li className='nav-links-mobile'>
-                    <Link
-                        to ='/login'
-                        className = "login-links"
-                        onClick={closeMobileMenu}
-                    >
-                        Login
-                    </Link>
-                </li>   
-            }
+          )}
         </ul>
 
-        {user.isLoggedIn === true ? <ProfileCard userN={user.userName}/> : <Button text="Login"/>  }
-    </nav>
+        {user.isLoggedIn === true ? (
+          <ProfileCard userN={user.userName} />
+        ) : (
+          <Button text="Login" />
+        )}
+      </nav>
     </>
-);
+  );
 }
 
 export default Navbar;
