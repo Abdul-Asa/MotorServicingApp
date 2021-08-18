@@ -1,9 +1,10 @@
-require('dotenv').config();
-const Mongoose = require('mongoose');
+require("dotenv").config();
+const Mongoose = require("mongoose");
 
 // const url = "mongodb://localhost:27017/motorservice";
 
-const url = process.env.URl;
+const url =
+  "mongodb+srv://customer:motorify@cluster0.u4etk.mongodb.net/Motorify?retryWrites=true&w=majority";
 
 module.exports = async () => {
   try {
@@ -12,23 +13,23 @@ module.exports = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-      .then(() => console.log('DataBase Connected!..'))
+      .then(() => console.log("DataBase Connected!.."))
       .catch((err) => console.log(err.message));
     // CHecking for Database connection
-    Mongoose.connection.on('connected', () => {
-      console.log('Mongoose connected to Database');
+    Mongoose.connection.on("connected", () => {
+      console.log("Mongoose connected to Database");
     });
 
     // Catching errors
-    Mongoose.connection.on('error', (error) => {
+    Mongoose.connection.on("error", (error) => {
       console.log(error.message);
     });
 
     // Checking database disconnection
-    Mongoose.connection.on('disconnected', (error) => {
-      console.log('Mongoose connection is disconnected');
+    Mongoose.connection.on("disconnected", (error) => {
+      console.log("Mongoose connection is disconnected");
     });
   } catch (error) {
-    console.error('message:' + error);
+    console.error("message:" + error);
   }
 };
