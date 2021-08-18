@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-const fs = require('fs');
-const Services = require('../models/servicesModel');
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const fs = require("fs");
+const Services = require("../models/servicesModel");
 const url = process.env.URL;
 // const url = "mongodb://localhost:27017/motorservice";
 dotenv.config();
@@ -13,15 +13,17 @@ mongoose
     useCreateIndex: true,
     useFindAndModify: false,
   })
-  .then(() => console.log('DB connection successful'));
+  .then(() => {
+    console.log("DB connection successful");
+  });
 
-const services = fs.readFileSync(`${__dirname}/motorServices.json`, 'utf8');
+const services = fs.readFileSync(`${__dirname}/motorServices.json`, "utf8");
 
 // Import data into the database
 const importData = async () => {
   try {
     await Services.create(JSON.parse(services));
-    console.log('Data successfully imported');
+    console.log("Data successfully imported");
   } catch (error) {
     console.log(error);
   }
@@ -32,13 +34,15 @@ const importData = async () => {
 const deleteData = async () => {
   try {
     await Services.deleteMany();
-    console.log('Deleted data successfully');
+    console.log("Deleted data successfully");
   } catch (error) {
     console.log(error);
   }
   process.exit();
 };
-const command = process.argv[2];
+// const command = process.argv[2];
 
-if (command === 'import') importData();
-if (command === 'delete') deleteData();
+// if (command === 'import') importData();
+// if (command === 'delete') deleteData();
+
+module.exports = { importData, deleteData };

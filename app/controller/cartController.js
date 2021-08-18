@@ -1,7 +1,7 @@
-const AppError = require('../helpers/errorHandler');
-const Cart = require('../models/cartSchema');
+const AppError = require("../helpers/errorHandler");
+const Cart = require("../models/cartSchema");
 
-exports.creatCart = async (req, res, next) => {
+exports.createCart = async (req, res, next) => {
   const {
     vehicle_details,
     contact_details,
@@ -16,13 +16,13 @@ exports.creatCart = async (req, res, next) => {
       appointment_date
     );
     res.status(201).json({
-      status: 'Success',
+      status: "Success",
       data: {
         newCart,
       },
     });
   } catch (error) {
-    return next(new AppError('Failed to create cart, please try again.', 500));
+    return next(new AppError("Failed to create cart, please try again.", 500));
   }
 };
 
@@ -33,12 +33,12 @@ exports.updateCart = async (req, res, next) => {
       runValidators: true,
     });
     return res.status(200).json({
-      status: 'success',
+      status: "success",
       data: {
         updatedCart,
       },
     });
   } catch (error) {
-    return next(new AppError('Failed to create cart, please try again.', 500));
+    return next(new AppError("Failed to create cart, please try again.", 500));
   }
 };

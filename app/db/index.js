@@ -1,5 +1,6 @@
 require("dotenv").config();
 const Mongoose = require("mongoose");
+const importData = require("../servicesData/import-services-data");
 
 // const url = "mongodb://localhost:27017/motorservice";
 
@@ -17,6 +18,7 @@ module.exports = async () => {
     // CHecking for Database connection
     Mongoose.connection.on("connected", () => {
       console.log("Mongoose connected to Database");
+      importData();
     });
 
     // Catching errors

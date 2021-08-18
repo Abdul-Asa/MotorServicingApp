@@ -15,7 +15,7 @@ const crypto = require("crypto");
 dotenv.config();
 
 const DOMAIN = process.env.DOMAIN;
-// const mg = mailgun({ apiKey: process.env.MAILGUN_APIKEY, domain: DOMAIN });
+const mg = mailgun({ apiKey: process.env.MAILGUN_APIKEY, domain: DOMAIN });
 const signToken = async (id) => {
   return await jwt.sign({ user_id: id }, process.env.TOKEN_KEY, {
     expiresIn: process.env.EXPIRES_IN,
@@ -87,7 +87,12 @@ const login = async (req, res, next) => {
     }
     const token = await signToken(user._id);
 
-    res.status(200).json({ status: "success", message: "logged in!", token });
+    res.status(200).json({
+      status: "success",
+      message: "logged in!",
+      token,
+      userName: user.firstName,
+    });
   } catch (error) {
     throw error;
   }

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from './Button';
 import Card from './Card';
 import Input from './Input';
 import InputGroup from './InputGroup';
-import { PageHeader } from './entryPage';
-import { Link } from 'react-router-dom';
+import { EntryPage, PageHeader } from './entryPage';
+import { Link, useHistory } from 'react-router-dom';
 import './css/entryPage.css';
 import { AiOutlineEye, AiFillEye } from 'react-icons/ai';
 import signupAsync from '../../redux/actions/signupAction.js';
@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Signup = () => {
   const dispatch = useDispatch();
-  // const history = useHistory();
+  const history = useHistory();
 
   const [inputType, setInputType] = useState('password');
   const [inputType2, setInputType2] = useState('password');
@@ -50,17 +50,18 @@ const Signup = () => {
   };
 
   // redirect users to service page after signup
-  // useEffect(() => {
-  //   if (!(state.signup_token === null)) {
-  //     history.push('/services');
-  //   }
-  // }, [state]);
+  useEffect(() => {
+    if (!(state.signup_token === null)) {
+      history.push('/services');
+    }
+  }, [state]);
 
   return (
     <>
       <PageHeader to="/">
         <div className="logo">
           <span className="color">
+            {' '}
             Motorify
             <i className="fas fa-car" />
           </span>
@@ -69,7 +70,7 @@ const Signup = () => {
       <div className="flex flexWidth">
         <Card>
           <h3>Sign up</h3>
-          <form onSubmit={submitLogin} netlify>
+          <form onSubmit={submitLogin}>
             <InputGroup>
               <Input
                 name="firstName"
@@ -148,11 +149,11 @@ const Signup = () => {
               />
             </InputGroup>
 
-            {state.isLoading ? (
+            {/* {state.isLoading ? (
               <h2>Loading... </h2>
             ) : (
               <h2>{state.error.data.message} </h2>
-            )}
+            )} */}
 
             <Button type="submit"> Sign Up </Button>
           </form>
