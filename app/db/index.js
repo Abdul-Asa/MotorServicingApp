@@ -3,8 +3,7 @@ const Mongoose = require("mongoose");
 
 // const url = "mongodb://localhost:27017/motorservice";
 
-const url =
-  "mongodb+srv://customer:motorify@cluster0.u4etk.mongodb.net/Motorify?retryWrites=true&w=majority";
+const url = process.env.DB_CONNECTION;
 
 module.exports = async () => {
   try {
