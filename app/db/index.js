@@ -3,7 +3,7 @@ const Mongoose = require("mongoose");
 
 // const url = "mongodb://localhost:27017/motorservice";
 
-const url = process.env.DB_CONNECTION;
+const url = process.env.URL;
 
 module.exports = async () => {
   try {

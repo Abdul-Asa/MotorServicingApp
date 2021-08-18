@@ -61,7 +61,7 @@ const Login = () => {
       <div className="flex">
         <Card>
           <h3>Login</h3>
-          <form name="login" method="POST" data-netlify="true">
+          <form>
             <InputGroup>
               <Input
                 name="email"
