@@ -13,13 +13,12 @@ module.exports = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
-      .then(() => console.log("DataBase Connected!.."))
+      .then(() => {
+        console.log("Connected to database !..");
+      })
       .catch((err) => console.log(err.message));
     // CHecking for Database connection
-    Mongoose.connection.on("connected", () => {
-      console.log("Mongoose connected to Database");
-      importData();
-    });
+    Mongoose.connection.on("connected", () => {});
 
     // Catching errors
     Mongoose.connection.on("error", (error) => {

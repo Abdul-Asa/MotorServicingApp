@@ -12,6 +12,7 @@ import loginAsync from '../../redux/actions/loginAction';
 const Login = () => {
   const dispatch = useDispatch();
   // const history = useHistory();
+  console.log(process.env);
 
   const [inputType, setInputType] = useState('password');
   const [loginInfo, setLoginInfo] = useState({
@@ -102,7 +103,7 @@ const Login = () => {
             {state.isLoading ? (
               <h2>Loading... </h2>
             ) : (
-              <h2>{state.error.data.message || ''} </h2>
+              <h2>state.error.data.message </h2>
             )}
 
             <Button

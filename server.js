@@ -3,6 +3,7 @@ const app = express();
 const Port = process.env.port || 3001;
 const databaseConnection = require("./app/db");
 const ourApp = require("./app");
+const path = require("path");
 
 // Database Connection
 databaseConnection();
@@ -23,6 +24,14 @@ app.use((err, req, res, next) => {
     message: err.message,
   });
 });
+
+if (process.env.NODE_ENV === "production") {
+  // Set static folder
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
 
 app.listen(Port, () => {
   console.log(`Server up, running on Port: ${Port}...`);

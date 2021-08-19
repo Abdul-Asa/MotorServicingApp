@@ -1,3 +1,4 @@
 export const config = {
-  BASEURL: process.env === 'development' ? 'http://localhost:3001' : '',
+  BASEURL:
+    process.env.NODE_ENV === 'development' ? 'http://localhost:3001' : '',
 };

@@ -15,6 +15,7 @@ mongoose
   })
   .then(() => {
     console.log("DB connection successful");
+    importData();
   });
 
 const services = fs.readFileSync(`${__dirname}/motorServices.json`, "utf8");

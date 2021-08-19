@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import Card from './Card';
 import Input from './Input';
 import InputGroup from './InputGroup';
-import { EntryPage, PageHeader } from './entryPage';
-import { Link, useHistory } from 'react-router-dom';
+import { PageHeader } from './entryPage';
+import { Link } from 'react-router-dom';
 import './css/entryPage.css';
 import { AiOutlineEye, AiFillEye } from 'react-icons/ai';
 import signupAsync from '../../redux/actions/signupAction.js';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Signup = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
+  // const history = useHistory();
 
   const [inputType, setInputType] = useState('password');
   const [inputType2, setInputType2] = useState('password');
@@ -25,7 +25,7 @@ const Signup = () => {
     repeatPassword: '',
   });
 
-  const state = useSelector((state) => state.signup || []);
+  // const state = useSelector((state) => state.signup || []);
   //console.log(state)
 
   const handleInput = (e) => {
@@ -50,11 +50,11 @@ const Signup = () => {
   };
 
   // redirect users to service page after signup
-  useEffect(() => {
-    if (!(state.signup_token === null)) {
-      history.push('/services');
-    }
-  }, [state]);
+  // useEffect(() => {
+  //   if (!(state.signup_token === null)) {
+  //     history.push('/services');
+  //   }
+  // }, [state]);
 
   return (
     <>
