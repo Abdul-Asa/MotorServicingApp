@@ -10,6 +10,9 @@ databaseConnection();
 
 app.use(express.json());
 
+router.get("/", (req, res) => {
+  res.send("welcome to our Motor Servicing App");
+});
 app.use("/", ourApp.router);
 
 app.use((req, res, next) => {
