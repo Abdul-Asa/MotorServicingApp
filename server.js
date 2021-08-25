@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const Port = process.env.port || 3001;
 const databaseConnection = require("./app/db");
-const ourApp = require("./app");
+const ourApp = require("./app/router/index");
 const path = require("path");
 
 // Database Connection
