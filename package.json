@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "cd front_end && npm run build",
     "install-front_end": "cd front_end && npm install",
-    "heroku-postbuild": "npm run install-front-end && npm run build",
+    "heroku-postbuild": "npm run install-front_end && npm run build",
     "start": "node server.js",
     "data:import": "node app/servicesData/import-services-data.js",
     "debug": "ndb server.js"

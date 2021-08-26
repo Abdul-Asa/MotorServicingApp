@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import Card from './Card';
 import Input from './Input';
 import InputGroup from './InputGroup';
-import { EntryPage, PageHeader } from './entryPage';
+import { PageHeader } from './entryPage';
 import { Link, useHistory } from 'react-router-dom';
 import './css/entryPage.css';
 import { AiOutlineEye, AiFillEye } from 'react-icons/ai';
@@ -54,7 +54,6 @@ const Signup = () => {
       console.log(success);
     }
   };
-
 
   return (
     <>
@@ -150,10 +149,10 @@ const Signup = () => {
             </InputGroup>
 
             {state.isLoading ? (
-            <h2>Loading... </h2>
-          ) : (
-            <h2>{state.error.data.message }  </h2>
-          )}
+              <h2>Loading... </h2>
+            ) : (
+              <h2>{state.error.data.message} </h2>
+            )}
 
             <Button type="submit"> Sign Up </Button>
           </form>

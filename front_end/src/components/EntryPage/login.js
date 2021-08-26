@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Button from './Button';
 import Card from './Card';
 import Input from './Input';
 import InputGroup from './InputGroup';
-import { EntryPage, PageHeader } from './entryPage';
+import { PageHeader } from './entryPage';
 import { Link, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineEye, AiFillEye } from 'react-icons/ai';
@@ -47,7 +47,6 @@ const Login = () => {
   };
 
   //redirect users to home page after login
-
 
   // useEffect(() => {
   //   if ((state.data.token !== null )) {

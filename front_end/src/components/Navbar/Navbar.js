@@ -25,10 +25,10 @@ function Navbar() {
       };
     }
   };
-  const [user, isLoggedIn] = useState({
+  const user = {
     userName: upDateNav().userName,
     isLoggedIn: upDateNav().isLoggedIn,
-  });
+  };
 
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
@@ -143,7 +143,6 @@ function Navbar() {
                 Login
               </Link>
             </li>
-            
           )}
         </ul>
 
